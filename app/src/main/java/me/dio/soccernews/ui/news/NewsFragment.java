@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import me.dio.soccernews.databinding.FragmentNewsBinding;
+import me.dio.soccernews.ui.adapter.NewsAdapter;
 
 public class NewsFragment extends Fragment {
 
@@ -22,7 +24,12 @@ public class NewsFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), binding.textNews::setText);
+        binding.rvNews.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        homeViewModel.getNews().observe(getViewLifecycleOwner(), news -> {
+            binding.rvNews.setAdapter(new NewsAdapter(news));
+
+        });
         return root;
     }
 
