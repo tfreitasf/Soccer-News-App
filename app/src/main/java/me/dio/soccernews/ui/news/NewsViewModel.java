@@ -1,8 +1,13 @@
 package me.dio.soccernews.ui.news;
 
+import android.app.Application;
+
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.room.Room;
 
 import java.util.List;
 
@@ -19,14 +24,18 @@ public class NewsViewModel extends ViewModel {
 
     private final MutableLiveData<List<News>> news = new MutableLiveData<>();
     private final SoccerNewsApi api;
+    private final AppDatabase db;
 
-    public NewsViewModel() {
+    public NewsViewModel(Application app) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://tfreitasf.github.io/Soccer-news-api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         api = retrofit.create(SoccerNewsApi.class);
+
+        db = Room.databaseBuilder(app, AppDatabase.class, "soccer-news").build();
+
         this.findNews();
     }
 
