@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class News {
     @PrimaryKey
-    private int id;
-
+    public int id;
     public String title;
     public String description;
     public String image;
