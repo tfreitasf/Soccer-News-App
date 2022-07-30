@@ -7,4 +7,5 @@
     <string name="cd_news_image">News Image</string>
     <string name="cd_favorite_button">Favorite Button</string>
     <string name="cd_share_button">Share Button</string>
+    <string name="error_network">Network error</string>
 </resources>

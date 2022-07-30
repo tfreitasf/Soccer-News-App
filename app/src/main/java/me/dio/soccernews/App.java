@@ -1,8 +1,10 @@
+package me.dio.soccernews;
+
 import android.app.Application;
 
 
 /**
- * FIXME fazer ineção de dependencia
+ * FIXME fazer injeção de dependencia
  * @see <a href="https://stackoverflow.com/a/14057777/3072570">Android Singleton with Global Context</a>
  */
 
